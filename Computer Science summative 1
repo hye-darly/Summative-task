@@ -41,18 +41,6 @@ public class TreasureHuntGame {
         ArrayList<String> player2 = new ArrayList<>();
         distributeTreasures(treasureList, player1, player2);
 
-        // Step 5: Calculate total values
-        int player1Value = calculateTreasureValue(player1);
-        int player2Value = calculateTreasureValue(player2);
-
-        // Step 6: Determine the winner
-        determineWinner(player1Value, player2Value);
-
-        // Display results
-        System.out.println("\nPlayer 1's Treasures: " + player1 + " (Total Value: " + player1Value + ")");
-        System.out.println("Player 2's Treasures: " + player2 + " (Total Value: " + player2Value + ")");
-    }
-
     public static void distributeTreasures(ArrayList<String> treasureList, ArrayList<String> player1, ArrayList<String> player2) {
         for (int i = 0; i < treasureList.size(); i++) {
             if (i % 2 == 0) {
@@ -63,14 +51,21 @@ public class TreasureHuntGame {
         }
     }
 
+        // Step 5: Calculate total values
+        int player1Value = calculateTreasureValue(player1);
+        int player2Value = calculateTreasureValue(player2);
+
     public static int calculateTreasureValue(ArrayList<String> playerTreasures) {
         int totalValue = 0;
         for (String treasure : playerTreasures) {
             totalValue += Integer.parseInt(treasure.substring(1)); // Extract numeric value
         }
-        return totalValue;
+        return totalValue;    
     }
 
+
+        // Step 6: Determine the winner
+        determineWinner(player1Value, player2Value);
     public static void determineWinner(int player1Value, int player2Value) {
         if (player1Value > player2Value) {
             System.out.println("Player 1 Wins!");
@@ -80,4 +75,11 @@ public class TreasureHuntGame {
             System.out.println("It's a Tie!");
         }
     }
-}
+
+
+        // Display results
+        System.out.println("\nPlayer 1's Treasures: " + player1 + " (Total Value: " + player1Value + ")");
+        System.out.println("Player 2's Treasures: " + player2 + " (Total Value: " + player2Value + ")");
+    }
+
+    
